@@ -1,0 +1,21 @@
+#Eureka server configuration
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname:
+      hostname: localhost
+    prefer-ip-address: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+#Logging level
+logging:
+  level:
+    org.springframework: INFO
+    com.netflix.eureka: INFO
+    com.netflix.discovery: INFO

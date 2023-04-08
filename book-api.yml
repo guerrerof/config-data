@@ -1,0 +1,48 @@
+server:
+  port: 8003
+  servlet:
+    context-path: /book/api
+
+# Eureka client configuration
+eureka:
+  instance: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: book_api
+  security:
+    user:
+      name: fagc
+      password: secret123
+
+  # Datasource configuration properties
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  datasource:
+    username: sa
+    password:
+    platform: h2
+    url: jdbc:h2:mem:books
+    driver-class-name: org.h2.Driver
+  jpa:
+    defer-datasource-initialization: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include=*:
+
+#Logging level
+logging:
+  level:
+    org.springframework: INFO
+    com.netflix.eureka: INFO
+    com.netflix.discovery: INFO

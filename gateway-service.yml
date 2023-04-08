@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+# Eureka client configuration
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: gateway_service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: book_api
+          uri: http://localhost:8003
+          #uri: lb://BOOK_API
+          predicates:
+            - Path=/book/api/books/**
+        - id: rating_api
+          uri: http://localhost:8004
+          predicates:
+            - Path=/rating/api/ratings/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
