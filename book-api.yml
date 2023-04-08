@@ -11,14 +11,14 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
+    instance:
+      hostname: localhost
 
 spring:
-  application:
-    name: book-api
   security:
     user:
-      name: fagc
-      password: secret123
+      name: ${SEC_USER}
+      password: ${SEC_PASS}
 
   # Datasource configuration properties
   h2:
