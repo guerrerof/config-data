@@ -14,7 +14,7 @@ eureka:
 
 spring:
   application:
-    name: book_api
+    name: book-api
   security:
     user:
       name: fagc
