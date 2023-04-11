@@ -11,8 +11,6 @@ eureka:
     hostname: localhost
 
 spring:
-  application:
-    name: gateway-service
   cloud:
     gateway:
       discovery:
