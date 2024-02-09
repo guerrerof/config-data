@@ -25,6 +25,10 @@ spring:
           uri: lb://rating-api
           predicates:
             - Path=/rating/api/ratings/**
+        - id: authentication-api
+          uri: lb://authentication-api
+          predicates:
+            - Path=/authentication/api/**
 
 management:
   endpoints:
