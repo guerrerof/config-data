@@ -18,7 +18,7 @@ spring:
           enabled: true
       routes:
         - id: book-api
-          uri: lb://book-api
+          uri: lb://BOOK-API
           predicates:
             - Path=/book/api/books/**
         - id: rating-api
