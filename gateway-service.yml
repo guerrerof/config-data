@@ -12,23 +12,27 @@ eureka:
 
 spring:
   cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
     gateway:
       discovery:
         locator:
           enabled: true
       routes:
-        - id: book-api
-          uri: lb://BOOK-API
-          predicates:
-            - Path=/book/api/books/**
-        - id: rating-api
-          uri: lb://rating-api
-          predicates:
-            - Path=/rating/api/ratings/**
         - id: authentication-api
-          uri: lb://authentication-api
+          uri: lb://AUTHENTICATION-API
           predicates:
             - Path=/authentication/api/**
+        #- id: book-api
+          #uri: lb://BOOK-API
+          #predicates:
+            #- Path=/book/api/books/**
+          #filter: authenticationFilter
+        - id: rating-api
+          uri: lb://RATING-API
+          predicates:
+            - Path=/rating/api/ratings/**
 
 management:
   endpoints:
